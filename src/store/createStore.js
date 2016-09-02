@@ -9,6 +9,12 @@ export default (initialState = {}, history) => {
   // ======================================================
   const middleware = [thunk, routerMiddleware(history)]
 
+  if (__DEV__) {
+    const loggerMiddleware = require('redux-logger')()
+
+    middleware.push(loggerMiddleware)
+  }
+
   // ======================================================
   // Store Enhancers
   // ======================================================
